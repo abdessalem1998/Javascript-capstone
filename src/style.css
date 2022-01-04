@@ -1,3 +1,68 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
 body {
-  background-color: bisque;
+  background-color: #f0f0f0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+a:hover {
+  color: #e1ddf0;
+}
+
+header {
+  background-color: #5442a2;
+}
+
+nav {
+  padding: 1.5rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+ul li {
+  margin-left: 40px;
+}
+
+p {
+  text-align: center;
+}
+
+.authors {
+  background-color: #fff;
+  padding: 1.5rem 5rem;
+}
+
+.authors-p {
+  color: #222369;
+  font-weight: 600;
+}
+
+.year {
+  background-color: #5442a2;
+  padding: 1.5rem 5rem;
+}
+
+.year-p {
+  color: #fff;
 }
