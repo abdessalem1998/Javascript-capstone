@@ -40,7 +40,6 @@ export const popup = (character) => {
     const appID = 'lOapMFXtQqVId3tniQD4';
     const url= 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
     submitcomment(url, appID, character);
-    alert('hi');
   });
 };
 
@@ -76,6 +75,10 @@ export const fetchComment = async (url, appID, character) => {
 };
 
 export const displayComments = async (response) => {
+  const i = commentCounter(response);
+  const cmtNumber = document.getElementById('cmtNumber');
+  cmtNumber.innerHTML=i;
+
   const comments = document.getElementById('comments');
   comments.innerHTML='';
   for (let i = 0; i < response.length; i += 1) {
@@ -88,5 +91,14 @@ export const displayComments = async (response) => {
 
     divComment.appendChild(pComment);
     comments.appendChild(divComment);
+  }
+};
+
+export const commentCounter =  (response) => {
+
+  if (response.length > 0) {
+    return response.length;
+  }else {
+    return 0;
   }
 };
