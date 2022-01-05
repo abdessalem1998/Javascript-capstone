@@ -8,7 +8,7 @@ const getChars = async () => {
 
 const displayCards = async () => {
   const container = document.querySelector('main');
-  let likesArray = await getLikes();
+  const likesArray = await getLikes();
   getChars().then((json) => {
     const infoArr = json.data;
     infoArr.forEach((character) => {
@@ -34,10 +34,6 @@ const displayCards = async () => {
 
       const span = document.createElement('span');
       span.classList.add('likes-counter');
-      const likesCount = document.querySelectorAll('.likes-counter');
-      likesCount.forEach((like, index) => {
-        like.innerHTML = `<span>${likesArray[index].likes} likes</span>`;
-      });
 
       const btn = document.createElement('button');
       btn.innerHTML = 'Comments';
@@ -62,25 +58,9 @@ const displayCards = async () => {
 
       container.appendChild(card);
     });
-    const icons = document.querySelectorAll('i');
-    icons.forEach((icon, index) => {
-      icon.addEventListener('click', async () => {
-        // eslint-disable-next-line no-underscore-dangle
-        const charId = infoArr[index - 1]._id;
-        await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/kIjGJySERmpdtnGfDL4M/likes', {
-          method: 'POST',
-          body: JSON.stringify({
-            item_id: charId,
-          }),
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-        });
-        const likesSpan = document.querySelectorAll('.likes-counter');
-        likesArray = await getLikes();
-        likesSpan[index - 1].innerHTML = `<span>${likesArray[index - 1].likes} likes</span>`;
-      });
+    const likesCount = document.querySelectorAll('.likes-counter');
+    likesCount.forEach((like, index) => {
+      like.innerHTML = `<span>${likesArray[index].likes}</span>`;
     });
   });
 };

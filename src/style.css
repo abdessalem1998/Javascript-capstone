@@ -47,7 +47,7 @@ ul li {
 }
 
 main {
-  padding: 0 0 7rem 0;
+  padding: 0 15% 7rem 15%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
