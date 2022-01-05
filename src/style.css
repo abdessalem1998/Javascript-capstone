@@ -26,7 +26,7 @@ header {
 }
 
 nav {
-  padding: 1.5rem 20rem;
+  padding: 1.5rem 12%;
   display: flex;
   justify-content: space-between;
   color: #fff;
@@ -42,9 +42,10 @@ ul li {
 }
 
 main {
-  padding: 7rem 20rem;
+  padding: 7rem 0;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 4rem 5rem;
 }
 

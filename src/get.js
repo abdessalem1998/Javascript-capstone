@@ -1,10 +1,12 @@
+import { getLikes, postLikes } from './likesAPI.js';
+
 const getChars = async () => {
   const info = await fetch('https://api.disneyapi.dev/characters');
   const json = await info.json();
   return json;
 };
 
-export default () => {
+export default async () => {
   const container = document.querySelector('main');
   getChars().then((json) => {
     const infoArr = json.data;
@@ -30,6 +32,7 @@ export default () => {
       is.classList.add('fa-heart');
 
       const span = document.createElement('span');
+      span.classList.add('likes-counter');
 
       const btn = document.createElement('button');
       btn.innerHTML = 'Comments';
@@ -37,7 +40,7 @@ export default () => {
         const modal = document.getElementById('myModal');
         modal.style.display = 'block';
         const span = document.getElementsByClassName('close')[0];
-        span.onclick = function () {
+        span.onclick = () => {
           modal.style.display = 'none';
         };
       });
@@ -53,6 +56,17 @@ export default () => {
       card.appendChild(btn);
 
       container.appendChild(card);
+    });
+    const icons = document.querySelectorAll('i');
+    icons.forEach((icon, index) => {
+      icon.addEventListener('click', async () => {
+        // eslint-disable-next-line no-underscore-dangle
+        const charId = infoArr[index - 1]._id;
+        await postLikes(charId);
+        const likesSpan = document.querySelectorAll('.likes-counter');
+        const likesArray = await getLikes();
+        likesSpan[index - 1].innerHTML = `<span>${likesArray[index - 1].likes} likes</span>`;
+      });
     });
   });
 };
