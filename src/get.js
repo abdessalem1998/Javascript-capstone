@@ -6,7 +6,7 @@ const getChars = async () => {
   return json;
 };
 
-export default async () => {
+const displayCards = async () => {
   const container = document.querySelector('main');
   let likesArray = await getLikes();
   getChars().then((json) => {
@@ -83,4 +83,9 @@ export default async () => {
       });
     });
   });
+};
+
+export {
+  displayCards,
+  getChars,
 };
