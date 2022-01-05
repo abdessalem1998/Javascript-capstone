@@ -34,29 +34,7 @@ export default () => {
       const btn = document.createElement('button');
       btn.innerHTML = 'Comments';
       btn.addEventListener('click', () => {
-        const modal = document.getElementById('myModal');
-        modal.style.display = 'block';
-        const span = document.getElementsByClassName('close')[0];
-        span.onclick = function () {
-          modal.style.display = 'none';
-        };
-        const modalImage = document.getElementById('model-image');
-        modalImage.src =character.imageUrl;
-
-        const modalTitle = document.getElementById('info-title');
-        modalTitle.innerHTML =character.name;
-
-        const film = document.getElementById('films');
-        film.innerHTML =`films : ${character.films}`;
-
-        const show = document.getElementById('show');
-        show.innerHTML =`Tv shows : ${character.tvShows}`;
-
-        const game = document.getElementById('game');
-        game.innerHTML =`game : ${character.videoGames}`;
-
-        const parkAttractions = document.getElementById('parkAttractions');
-        parkAttractions.innerHTML =`ParkAttractions : ${character.parkAttractions}`;
+        popup(character);
       });
 
       likes.appendChild(is);
@@ -71,5 +49,54 @@ export default () => {
 
       container.appendChild(card);
     });
+  });
+};
+
+const popup = (character) => {
+  const modal = document.getElementById('myModal');
+  modal.style.display = 'block';
+  const span = document.getElementsByClassName('close')[0];
+  span.onclick = function () {
+    modal.style.display = 'none';
+  };
+  const modalImage = document.getElementById('model-image');
+  modalImage.src =character.imageUrl;
+
+  const modalTitle = document.getElementById('info-title');
+  modalTitle.innerHTML =character.name;
+
+  const film = document.getElementById('films');
+  film.innerHTML =`films : ${character.films}`;
+
+  const show = document.getElementById('show');
+  show.innerHTML =`Tv shows : ${character.tvShows}`;
+
+  const game = document.getElementById('game');
+  game.innerHTML =`game : ${character.videoGames}`;
+
+  const parkAttractions = document.getElementById('parkAttractions');
+  parkAttractions.innerHTML =`ParkAttractions : ${character.parkAttractions}`;
+
+  const btn = document.getElementById('comment');
+  btn.addEventListener('click', () => {
+    const appID = 'GVPmGT4scJEgI8VtUKDi';
+    const url= 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
+    submitcomment(url, appID, character);
+  });
+};
+
+export const submitcomment = async (url, appID, character) => {
+  const name = document.getElementById('name').value;
+  const comment = document.getElementById('textComment').value;
+  const response = fetch(`${url}${appID}/comments/`, {
+  method: 'POST',
+  body: JSON.stringify({
+    item_id: `${character._id}`,
+    username: `${name}`,
+    comment: `${comment}`,
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
   });
 };
