@@ -40,6 +40,23 @@ export default () => {
         span.onclick = function () {
           modal.style.display = 'none';
         };
+        const modalImage = document.getElementById('model-image');
+        modalImage.src =character.imageUrl;
+
+        const modalTitle = document.getElementById('info-title');
+        modalTitle.innerHTML =character.name;
+
+        const film = document.getElementById('films');
+        film.innerHTML =`films : ${character.films}`;
+
+        const show = document.getElementById('show');
+        show.innerHTML =`Tv shows : ${character.tvShows}`;
+
+        const game = document.getElementById('game');
+        game.innerHTML =`game : ${character.videoGames}`;
+
+        const parkAttractions = document.getElementById('parkAttractions');
+        parkAttractions.innerHTML =`ParkAttractions : ${character.parkAttractions}`;
       });
 
       likes.appendChild(is);
