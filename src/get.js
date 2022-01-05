@@ -60,7 +60,7 @@ const displayCards = async () => {
     });
     const likesCount = document.querySelectorAll('.likes-counter');
     likesCount.forEach((like, index) => {
-      like.innerHTML = `<span>${likesArray[index].likes}</span>`;
+      like.innerHTML = `${likesArray[index].likes}`;
     });
   });
 };
