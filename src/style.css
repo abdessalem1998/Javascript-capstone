@@ -206,6 +206,13 @@ p {
 
 .comments {
   margin-bottom: 50px;
+  height : 150px;
+  overflow: scroll;
+}
+
+.pcomment {
+  border-bottom: 4px dotted #222369;
+  padding-bottom: 10px;
 }
 
 .comment {

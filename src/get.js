@@ -35,6 +35,22 @@ export default () => {
       btn.innerHTML = 'Comments';
       btn.addEventListener('click', () => {
         popup(character);
+        const comments = document.getElementById('comments');
+        comments.innerHTML='';
+
+        const divComment = document.createElement('div');
+        divComment.classList.add('comment');
+
+        const pComment = document.createElement('p');
+        pComment.innerHTML="hello";
+
+        divComment.appendChild(pComment);
+        comments.appendChild(divComment);
+        const appID = 'lOapMFXtQqVId3tniQD4';
+        const url= 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
+        fetchComment(url, appID, character).then((response) => {
+          displayComments(response);
+        });
       });
 
       likes.appendChild(is);
@@ -77,18 +93,32 @@ const popup = (character) => {
   const parkAttractions = document.getElementById('parkAttractions');
   parkAttractions.innerHTML =`ParkAttractions : ${character.parkAttractions}`;
 
+
+  const commentContainer = document.getElementById('commentContainer');
+  commentContainer.innerHTML  =`<h2 class="info-title">Add a comment</h2>
+  <input type="text" required id="name" name="input" class="input">
+  <textarea name="name" id="textComment" rows="8" cols="80" class="text-input"></textarea>`;
+
+  const btn2 = document.createElement('button');
+  btn2.innerHTML ='Comment';
+  btn2.classList.add('btn');
+
+  //commentContainer.appendChild(infoTitle);
+  commentContainer.appendChild(btn2);
+  //btn
   const btn = document.getElementById('comment');
-  btn.addEventListener('click', () => {
-    const appID = 'GVPmGT4scJEgI8VtUKDi';
+  btn2.addEventListener('click', () => {
+    const appID = 'lOapMFXtQqVId3tniQD4';
     const url= 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
     submitcomment(url, appID, character);
+    alert('hi');
   });
 };
 
 export const submitcomment = async (url, appID, character) => {
   const name = document.getElementById('name').value;
   const comment = document.getElementById('textComment').value;
-  const response = fetch(`${url}${appID}/comments/`, {
+  const response = await fetch(`${url}${appID}/comments/`, {
   method: 'POST',
   body: JSON.stringify({
     item_id: `${character._id}`,
@@ -99,4 +129,35 @@ export const submitcomment = async (url, appID, character) => {
     'Content-type': 'application/json; charset=UTF-8',
   },
   });
+  fetchComment(url, appID, character).then((response) => {
+    console.log(response);
+    displayComments(response);
+  });
+};
+
+export const fetchComment = async (url, appID, character) => {
+  const response = await fetch(`${url}${appID}/comments?item_id=${character._id}`, {
+  method: 'GET',
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+    },
+  });
+  const jsonRespnse = await response.json() ;
+  return jsonRespnse;
+};
+
+export const displayComments = async (response) => {
+  const comments = document.getElementById('comments');
+  comments.innerHTML='';
+  for (let i = 0; i < response.length; i += 1) {
+    const divComment = document.createElement('div');
+    divComment.classList.add('comment');
+
+    const pComment = document.createElement('p');
+    divComment.classList.add('pcomment');
+    pComment.innerHTML=`${response[i].creation_date} ${response[i].username} : ${response[i].comment}`;
+
+    divComment.appendChild(pComment);
+    comments.appendChild(divComment);
+  }
 };
