@@ -16,9 +16,13 @@
 - Font Awesome 5
 - Jest
 
+## Video about this project
+
+[Click here to watch our Loom video!](link-will-be-here-soon)
+
 ## Live Demo
 
-[Click here to see a live version of this app!](https://affectionate-kilby-a992c3.netlify.app/)
+[Click here to see a live version of this app!](link-will-be-here-soon)
 
 ## Getting Started
 
