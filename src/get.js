@@ -38,18 +38,18 @@ export default () => {
       btn.addEventListener('click', () => {
         popup(character);
         const comments = document.getElementById('comments');
-        comments.innerHTML='';
+        comments.innerHTML = '';
 
         const divComment = document.createElement('div');
         divComment.classList.add('comment');
 
         const pComment = document.createElement('p');
-        pComment.innerHTML="loading ...";
+        pComment.innerHTML = 'loading ...';
 
         divComment.appendChild(pComment);
         comments.appendChild(divComment);
         const appID = 'lOapMFXtQqVId3tniQD4';
-        const url= 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
+        const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
         fetchComment(url, appID, character).then((response) => {
           displayComments(response);
         });

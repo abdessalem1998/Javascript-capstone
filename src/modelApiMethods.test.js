@@ -16,13 +16,13 @@ describe('Testing commentCounter method', () => {
     // Arrange
     const arr = [
       {
-       "likes": 5,
-       "item_id": "item1"
-     },
-     {
-       "likes": 3,
-       "item_id": "item2"
-     }
+        likes: 5,
+        item_id: 'item1',
+      },
+      {
+        likes: 3,
+        item_id: 'item2',
+      },
     ];
 
     // Act
