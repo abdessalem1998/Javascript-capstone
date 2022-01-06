@@ -4,9 +4,9 @@
 
 > This project is a web app created using API and asynchronous functions in JavaScript. You can like the characters' cards and leave a nice comment in the popup by clicking on the "Comments" button.
 
-<img src="./img/desktop-home.gif" width="500px">
-<img src="./img/desktop-popup.gif" width="500px">
-<img src="./img/its-changing.gif" width="500px">
+<img src="./img/desktop-home.gif" width="700px">
+<img src="./img/desktop-popup.gif" width="700px">
+<img src="./img/its-changing.gif" width="700px">
 
 
 ## Built With
