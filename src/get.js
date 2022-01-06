@@ -1,3 +1,4 @@
+import { popup, displayComments, fetchComment } from './modelApiMethods.js';
 import getLikes from './likesAPI.js';
 
 const getChars = async () => {
@@ -38,12 +39,23 @@ const displayCards = async () => {
       const btn = document.createElement('button');
       btn.innerHTML = 'Comments';
       btn.addEventListener('click', () => {
-        const modal = document.getElementById('myModal');
-        modal.style.display = 'block';
-        const span = document.getElementsByClassName('close')[0];
-        span.onclick = () => {
-          modal.style.display = 'none';
-        };
+        popup(character);
+        const comments = document.getElementById('comments');
+        comments.innerHTML = '';
+
+        const divComment = document.createElement('div');
+        divComment.classList.add('comment');
+
+        const pComment = document.createElement('p');
+        pComment.innerHTML = 'loading ...';
+
+        divComment.appendChild(pComment);
+        comments.appendChild(divComment);
+        const appID = 'lOapMFXtQqVId3tniQD4';
+        const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
+        fetchComment(url, appID, character).then((response) => {
+          displayComments(response);
+        });
       });
 
       likes.appendChild(is);
