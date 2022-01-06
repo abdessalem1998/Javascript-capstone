@@ -1,11 +1,14 @@
+import getLikes from './likesAPI.js';
+
 const getChars = async () => {
   const info = await fetch('https://api.disneyapi.dev/characters');
   const json = await info.json();
   return json;
 };
 
-export default () => {
+const displayCards = async () => {
   const container = document.querySelector('main');
+  const likesArray = await getLikes();
   getChars().then((json) => {
     const infoArr = json.data;
     infoArr.forEach((character) => {
@@ -30,6 +33,7 @@ export default () => {
       is.classList.add('fa-heart');
 
       const span = document.createElement('span');
+      span.classList.add('likes-counter');
 
       const btn = document.createElement('button');
       btn.innerHTML = 'Comments';
@@ -37,7 +41,7 @@ export default () => {
         const modal = document.getElementById('myModal');
         modal.style.display = 'block';
         const span = document.getElementsByClassName('close')[0];
-        span.onclick = function () {
+        span.onclick = () => {
           modal.style.display = 'none';
         };
       });
@@ -54,5 +58,14 @@ export default () => {
 
       container.appendChild(card);
     });
+    const likesCount = document.querySelectorAll('.likes-counter');
+    likesCount.forEach((like, index) => {
+      like.innerHTML = `${likesArray[index].likes}`;
+    });
   });
+};
+
+export {
+  displayCards,
+  getChars,
 };
