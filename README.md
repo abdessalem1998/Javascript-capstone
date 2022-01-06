@@ -16,9 +16,10 @@
 - Font Awesome 5
 - Jest
 
-## Video about this project
+## Videos about this project
 
-[Click here to watch our Loom video!](link-will-be-here-soon)
+[The Loom video about the Home page!](https://www.loom.com/share/ddb7be7d621d46f88496204d39b0dd9f)
+[The Loom video about the Comments popup!](link-will-be-here-soon)
 
 ## Live Demo
 
