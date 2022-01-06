@@ -64,7 +64,7 @@ export const popup = (character) => {
   const modal = document.getElementById('myModal');
   modal.style.display = 'block';
   const span = document.getElementsByClassName('close')[0];
-  span.onclick = function () {
+  span.onclick = () => {
     modal.style.display = 'none';
   };
   const modalImage = document.getElementById('model-image');
