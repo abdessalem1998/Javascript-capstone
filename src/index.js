@@ -1,4 +1,6 @@
 import './style.css';
-import get from './get.js';
+import { displayCards } from './get.js';
+import cardCount from './cardsCounter.js';
 
-get();
+displayCards();
+cardCount();

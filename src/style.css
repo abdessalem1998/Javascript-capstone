@@ -26,7 +26,7 @@ header {
 }
 
 nav {
-  padding: 1.5rem 20rem;
+  padding: 1.5rem 12%;
   display: flex;
   justify-content: space-between;
   color: #fff;
@@ -41,10 +41,16 @@ ul li {
   margin-left: 40px;
 }
 
+.card-counter {
+  margin: 0 auto;
+  padding: 5rem 0;
+}
+
 main {
-  padding: 7rem 20rem;
+  padding: 0 15% 7rem 15%;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 4rem 5rem;
 }
 
