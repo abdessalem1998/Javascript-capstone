@@ -1,4 +1,4 @@
-import { commentCounter } from './modelApiMethods';
+import { commentCounter } from './modelApiMethods.js';
 
 describe('Testing commentCounter method', () => {
   test('case of empty array response', () => {

@@ -9,7 +9,7 @@ const getChars = async () => {
 
 const displayCards = async () => {
   const container = document.querySelector('main');
-  const likesArray = await getLikes();
+  let likesArray = await getLikes();
   getChars().then((json) => {
     const infoArr = json.data;
     infoArr.forEach((character) => {
@@ -73,6 +73,23 @@ const displayCards = async () => {
     const likesCount = document.querySelectorAll('.likes-counter');
     likesCount.forEach((like, index) => {
       like.innerHTML = `${likesArray[index].likes}`;
+    });
+    // add new like to the API and update like on the page
+    const likeButtons = document.querySelectorAll('.fa-heart');
+    likeButtons.forEach((like, index = 0) => {
+      like.addEventListener('click', async () => {
+        await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/3tZc2F1Bt1DjeUFt7vyK/likes', {
+          method: 'POST',
+          body: JSON.stringify({
+            item_id: `item${index}`,
+          }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        });
+        likesArray = await getLikes();
+        likesCount[index].innerHTML = `${likesArray[index].likes}`;
+      });
     });
   });
 };
