@@ -4,5 +4,5 @@ export default async () => {
   const title = document.querySelector('.card-counter');
   const cards = await getChars();
   const cardsCount = cards.data;
-  title.innerHTML = `<h1>This page contains ${cardsCount.length} characters</h1>`;
+  title.innerHTML = `<h1>You can find ${cardsCount.length} characters on this page!</h1>`;
 };

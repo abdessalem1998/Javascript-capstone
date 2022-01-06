@@ -20,8 +20,8 @@ test('Test item counter', async () => {
   ];
 
   // Adding the data into the title
-  title.innerHTML = `This page contains ${data.length} characters`;
+  title.innerHTML = `<h1>You can find ${data.length} characters on this page!</h1>`;
 
   // Testing the output
-  expect(title.innerHTML).toBe('This page contains 3 characters');
+  expect(title.innerHTML).toBe('<h1>You can find 3 characters on this page!</h1>');
 });
