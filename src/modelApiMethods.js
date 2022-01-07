@@ -1,15 +1,3 @@
-export const fetchComment = async (url, appID, character) => {
-  /* eslint-disable no-underscore-dangle */
-  const response = await fetch(`${url}${appID}/comments?item_id=${character._id}`, {
-    method: 'GET',
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-  });
-  const jsonRespnse = await response.json();
-  return jsonRespnse;
-};
-
 export const commentCounter = (response) => (response.length > 0 ? response.length : 0);
 
 export const displayComments = async (response) => {
@@ -30,6 +18,19 @@ export const displayComments = async (response) => {
     divComment.appendChild(pComment);
     comments.appendChild(divComment);
   }
+};
+
+export const fetchComment = async (url, appID, character) => {
+  // NOTE The _id underscore is from the API response, that's why we disabled the underscore rule
+  /* eslint-disable no-underscore-dangle */
+  const response = await fetch(`${url}${appID}/comments?item_id=${character._id}`, {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  });
+  const jsonRespnse = await response.json();
+  return jsonRespnse;
 };
 
 export const submitcomment = async (url, appID, character) => {
