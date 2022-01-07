@@ -18,8 +18,7 @@
 
 ## Videos about this project
 
-[The Loom video about the Home page!](https://www.loom.com/share/ddb7be7d621d46f88496204d39b0dd9f)
-[The Loom video about the Comments popup!](link-will-be-here-soon)
+[Our video about this project!!](https://drive.google.com/file/d/19maUw5AoBAaNVh1vEOwYFU3fSis09zbk/view?usp=sharing)
 
 ## Live Demo
 
