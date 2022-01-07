@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 export const submitcomment = async (url, appID, character) => {
   const name = document.getElementById('name').value;
   const comment = document.getElementById('textComment').value;
