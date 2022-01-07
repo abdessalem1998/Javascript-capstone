@@ -1,31 +1,5 @@
-/* eslint-disable consistent-return */
-export const submitcomment = async (url, appID, character) => {
-  const name = document.getElementById('name').value;
-  const comment = document.getElementById('textComment').value;
-  /* eslint-disable no-underscore-dangle */
-  if (name !== '' && comment !== '') {
-    const response = await fetch(`${url}${appID}/comments/`, {
-      method: 'POST',
-      body: JSON.stringify({
-        item_id: `${character._id}`,
-        username: `${name}`,
-        comment: `${comment}`,
-      }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    });
-    /* eslint-disable no-use-before-define */
-    fetchComment(url, appID, character).then((response) => {
-      displayComments(response);
-      document.getElementById('name').value = '';
-      document.getElementById('textComment').value = '';
-    });
-    return response;
-  }
-};
-
 export const fetchComment = async (url, appID, character) => {
+  /* eslint-disable no-underscore-dangle */
   const response = await fetch(`${url}${appID}/comments?item_id=${character._id}`, {
     method: 'GET',
     headers: {
@@ -34,6 +8,15 @@ export const fetchComment = async (url, appID, character) => {
   });
   const jsonRespnse = await response.json();
   return jsonRespnse;
+};
+
+export const commentCounter = (response) => {
+  /* eslint-disable no-else-return */
+  if (response.length > 0) {
+    return response.length;
+  } else {
+    return 0;
+  }
 };
 
 export const displayComments = async (response) => {
@@ -56,13 +39,26 @@ export const displayComments = async (response) => {
   }
 };
 
-export const commentCounter = (response) => {
-  /* eslint-disable no-else-return */
-  if (response.length > 0) {
-    return response.length;
-  } else {
-    return 0;
-  }
+export const submitcomment = async (url, appID, character) => {
+  const name = document.getElementById('name').value;
+  const comment = document.getElementById('textComment').value;
+  const response = await fetch(`${url}${appID}/comments/`, {
+    method: 'POST',
+    body: JSON.stringify({
+      item_id: `${character._id}`,
+      username: `${name}`,
+      comment: `${comment}`,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  });
+  fetchComment(url, appID, character).then((response) => {
+    displayComments(response);
+    document.getElementById('name').value = '';
+    document.getElementById('textComment').value = '';
+  });
+  return response;
 };
 
 export const popup = (character) => {
@@ -92,8 +88,8 @@ export const popup = (character) => {
 
   const commentContainer = document.getElementById('commentContainer');
   commentContainer.innerHTML = `<h2 class="info-title">Add a comment</h2>
-  <input type="text" required id="name" name="input" class="input" placeholder="Your Name">
-  <textarea name="name" id="textComment" rows="8" cols="80" class="text-input" placeholder="Say something nice..."></textarea>`;
+  <input type="text" id="name" name="input" class="input" placeholder="Your Name" required>
+  <textarea name="name" id="textComment" rows="8" cols="80" class="text-input" placeholder="Say something nice..." required></textarea>`;
 
   const btn2 = document.createElement('button');
   btn2.innerHTML = 'Comment';
