@@ -23,7 +23,7 @@
 
 ## Live Demo
 
-[Click here to see a live version of this app!](link-will-be-here-soon)
+[Click here to see a live version of this app!](https://abdessalem1998.github.io/Javascript-capstone/dist/)
 
 ## Getting Started
 
