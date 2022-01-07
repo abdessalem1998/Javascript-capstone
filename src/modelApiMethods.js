@@ -22,7 +22,6 @@ export const submitcomment = async (url, appID, character) => {
     });
     return response;
   }
-
 };
 
 export const fetchComment = async (url, appID, character) => {
@@ -92,8 +91,8 @@ export const popup = (character) => {
 
   const commentContainer = document.getElementById('commentContainer');
   commentContainer.innerHTML = `<h2 class="info-title">Add a comment</h2>
-  <input type="text" required id="name" name="input" class="input">
-  <textarea name="name" id="textComment" rows="8" cols="80" class="text-input"></textarea>`;
+  <input type="text" required id="name" name="input" class="input" placeholder="Your Name">
+  <textarea name="name" id="textComment" rows="8" cols="80" class="text-input" placeholder="Say something nice..."></textarea>`;
 
   const btn2 = document.createElement('button');
   btn2.innerHTML = 'Comment';
