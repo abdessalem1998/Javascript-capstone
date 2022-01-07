@@ -16,6 +16,8 @@ export const submitcomment = async (url, appID, character) => {
   /* eslint-disable no-use-before-define */
   fetchComment(url, appID, character).then((response) => {
     displayComments(response);
+    document.getElementById('name').value = '';
+    document.getElementById('textComment').value = '';
   });
   return response;
 };
