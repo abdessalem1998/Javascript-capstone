@@ -2,24 +2,27 @@ export const submitcomment = async (url, appID, character) => {
   const name = document.getElementById('name').value;
   const comment = document.getElementById('textComment').value;
   /* eslint-disable no-underscore-dangle */
-  const response = await fetch(`${url}${appID}/comments/`, {
-    method: 'POST',
-    body: JSON.stringify({
-      item_id: `${character._id}`,
-      username: `${name}`,
-      comment: `${comment}`,
-    }),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-  });
-  /* eslint-disable no-use-before-define */
-  fetchComment(url, appID, character).then((response) => {
-    displayComments(response);
-    document.getElementById('name').value = '';
-    document.getElementById('textComment').value = '';
-  });
-  return response;
+  if (name !== '' && comment !== '') {
+    const response = await fetch(`${url}${appID}/comments/`, {
+      method: 'POST',
+      body: JSON.stringify({
+        item_id: `${character._id}`,
+        username: `${name}`,
+        comment: `${comment}`,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    /* eslint-disable no-use-before-define */
+    fetchComment(url, appID, character).then((response) => {
+      displayComments(response);
+      document.getElementById('name').value = '';
+      document.getElementById('textComment').value = '';
+    });
+    return response;
+  }
+
 };
 
 export const fetchComment = async (url, appID, character) => {
