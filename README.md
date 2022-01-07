@@ -18,11 +18,11 @@
 
 ## Videos about this project
 
-[Our video about this project!!](https://drive.google.com/file/d/19maUw5AoBAaNVh1vEOwYFU3fSis09zbk/view?usp=sharing)
+[Our video about this project!](https://drive.google.com/file/d/19maUw5AoBAaNVh1vEOwYFU3fSis09zbk/view?usp=sharing)
 
 ## Live Demo
 
-[Click here to see a live version of this app!](link-will-be-here-soon)
+[Click here to see a live version of this app!](https://abdessalem1998.github.io/Javascript-capstone/dist/)
 
 ## Getting Started
 
