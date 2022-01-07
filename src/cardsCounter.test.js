@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-test('Test item counter', async () => {
+test('Test item counter', () => {
   // Create a new element on the page
   const title = document.createElement('div');
 
