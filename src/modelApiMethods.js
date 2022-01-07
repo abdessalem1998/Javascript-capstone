@@ -10,14 +10,7 @@ export const fetchComment = async (url, appID, character) => {
   return jsonRespnse;
 };
 
-export const commentCounter = (response) => {
-  /* eslint-disable no-else-return */
-  if (response.length > 0) {
-    return response.length;
-  } else {
-    return 0;
-  }
-};
+export const commentCounter = (response) => (response.length > 0 ? response.length : 0);
 
 export const displayComments = async (response) => {
   const i = commentCounter(response);
